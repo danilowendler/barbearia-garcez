@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Export do Relume: material de referência, não é código da aplicação
+    "relume-export/**",
   ]),
 ]);
 

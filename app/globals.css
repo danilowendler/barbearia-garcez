@@ -1,26 +1,287 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Tokens da identidade (DESIGN-bmw.md) */
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-elevated: var(--surface-dark-elevated);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-soft: var(--on-dark-soft);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-card: var(--surface-card);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+ * Paleta e formas de DESIGN-bmw.md:
+ * canvas branco, azul #1c69d4 como única cor de ação,
+ * cantos retos (radius 0), navy #1a2129 para bandas escuras.
+ */
+:root {
+  --background: #ffffff;            /* canvas */
+  --foreground: #262626;            /* ink */
+  --card: #ffffff;
+  --card-foreground: #262626;
+  --popover: #ffffff;
+  --popover-foreground: #262626;
+  --primary: #1c69d4;               /* BMW blue */
+  --primary-foreground: #ffffff;
+  --secondary: #f7f7f7;             /* surface-soft */
+  --secondary-foreground: #262626;
+  --muted: #f7f7f7;
+  --muted-foreground: #6b6b6b;      /* muted */
+  --accent: #ebebeb;                /* surface-strong */
+  --accent-foreground: #262626;
+  --destructive: #dc2626;
+  --border: #e6e6e6;                /* hairline */
+  --input: #cccccc;                 /* hairline-strong */
+  --ring: #1c69d4;
+  --chart-1: #1c69d4;
+  --chart-2: #0653b6;
+  --chart-3: #6b6b6b;
+  --chart-4: #9a9a9a;
+  --chart-5: #262626;
+  --radius: 0rem;                   /* rectangular — assinatura da identidade */
+  --sidebar: #f7f7f7;
+  --sidebar-foreground: #262626;
+  --sidebar-primary: #1c69d4;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ebebeb;
+  --sidebar-accent-foreground: #262626;
+  --sidebar-border: #e6e6e6;
+  --sidebar-ring: #1c69d4;
+
+  /* Tokens extras da identidade */
+  --surface-dark: #1a2129;
+  --surface-dark-elevated: #262e38;
+  --on-dark: #ffffff;
+  --on-dark-soft: #bbbbbb;
+  --surface-soft: #f7f7f7;
+  --surface-card: #fafafa;
+  --success: #22c55e;
+  --warning: #f59e0b;
+}
+
+.dark {
+  --background: #1a2129;            /* surface-dark */
+  --foreground: #ffffff;
+  --card: #262e38;                  /* surface-dark-elevated */
+  --card-foreground: #ffffff;
+  --popover: #262e38;
+  --popover-foreground: #ffffff;
+  --primary: #1c69d4;
+  --primary-foreground: #ffffff;
+  --secondary: #262e38;
+  --secondary-foreground: #ffffff;
+  --muted: #262e38;
+  --muted-foreground: #bbbbbb;      /* on-dark-soft */
+  --accent: #262e38;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.18);
+  --ring: #1c69d4;
+  --chart-1: #1c69d4;
+  --chart-2: #0653b6;
+  --chart-3: #bbbbbb;
+  --chart-4: #9a9a9a;
+  --chart-5: #ffffff;
+  --sidebar: #262e38;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #1c69d4;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1a2129;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.12);
+  --sidebar-ring: #1c69d4;
+
+  --surface-dark: #1a2129;
+  --surface-dark-elevated: #262e38;
+  --on-dark: #ffffff;
+  --on-dark-soft: #bbbbbb;
+  --surface-soft: #262e38;
+  --surface-card: #262e38;
+  --success: #22c55e;
+  --warning: #f59e0b;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Navegação suave por âncoras (M5.5) ─────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Arte animada por scroll (M5.5) ─────────────────────────────────────
+   O hook useScrollProgress grava --progress (0→1) no elemento .scroll-art;
+   todo o movimento deriva dela via calc/clamp — roda no compositor. */
+.scroll-art {
+  --progress: 0;
+}
+
+/* traço que "se desenha": paths com pathLength=1 */
+.scroll-art [data-draw] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - clamp(0, var(--progress) * 2.6, 1));
+}
+
+/* tesoura desliza pela linha */
+.cut-scissors {
+  transform: translateX(
+    calc(clamp(0, (var(--progress) - 0.18) / 0.5, 1) * 620px)
+  );
+  will-change: transform;
+}
+
+/* metade "cortada" do fio cai e apaga */
+.cut-line-right {
+  transform-box: view-box;
+  transform-origin: 770px 160px;
+  transform: translateY(
+      calc(clamp(0, (var(--progress) - 0.7) / 0.25, 1) * 34px)
+    )
+    rotate(calc(clamp(0, (var(--progress) - 0.7) / 0.25, 1) * 2.5deg));
+  opacity: calc(1 - clamp(0, (var(--progress) - 0.7) / 0.25, 1) * 0.65);
+}
+
+/* lâminas tesouram em loop (tempo), o deslocamento é do scroll */
+.blade-a,
+.blade-b {
+  transform-box: view-box;
+  transform-origin: 150px 160px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .blade-a {
+    animation: snip-a 1.15s ease-in-out infinite;
+  }
+  .blade-b {
+    animation: snip-b 1.15s ease-in-out infinite;
+  }
+  .clipper-float {
+    animation: clipper-float 4.5s ease-in-out infinite alternate;
+  }
+  .hair-fall {
+    animation: hair-fall 2.6s linear infinite;
+  }
+}
+@keyframes snip-a {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(7.5deg);
+  }
+}
+@keyframes snip-b {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-7.5deg);
+  }
+}
+@keyframes clipper-float {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+@keyframes hair-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(70px);
+    opacity: 0;
+  }
+}
+
+/* sem movimento: arte aparece pronta */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-art {
+    --progress: 1 !important;
+  }
+}
+/* ── Scroll reveal (M5.5) ───────────────────────────────────────────────
+   Só esconde quando o usuário aceita movimento; sem JS/reduced-motion o
+   conteúdo permanece visível. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal[data-revealed] {
+    opacity: 1;
+    transform: none;
+  }
 }
