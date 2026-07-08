@@ -187,7 +187,7 @@ Seções (ordem do [sitemap](relume-export/sitemap.md), esquemas re-mapeados par
 
 ---
 
-## M8 — Identidade "barbearia de rua" (street) + barber pole — 8.1/8.2 PRONTOS (em preview)
+## ✅ M8 — Identidade street + barber pole (concluído, EM PRODUÇÃO)
 
 **Contexto (time de produto):** o site está corporativo demais para uma barbearia de vila com público de cultura periférica/street. Requisitos: (1) estética de rua, (2) incorporar o **vermelho** do barber pole da fachada, (3) possível elemento 3D do pole com animação de scroll.
 
@@ -210,14 +210,14 @@ Seções (ordem do [sitemap](relume-export/sitemap.md), esquemas re-mapeados par
 ### 8.3 — Detalhes street seção a seção
 - [x] Headlines com **palavra de destaque em vermelho** (risco de navalha fica p/ iteração) ou marcada com "risco de navalha" (SVG stroke à mão, ecoando os desenhos freestyle das fotos reais)
 - [x] Preços como **tags/etiquetas** (produtos) (sticker levemente rotacionado, borda grossa) em vez de texto sóbrio
-- [ ] Fotos da galeria com moldura/fita adesiva ou borda dura — cara de mural de rua
+- [x] Galeria com molduras brancas grossas + rotação alternada (mural)
 - [x] Depoimentos como "pichação de parede": aspas gigantes, tipografia display
 - [x] Footer com a faixa tricolor + wordmark grande
-- [ ] Microcopy mais direto onde couber ("Cola aqui", "Chama no zap") — validar tom com o time
+- [ ] Microcopy mais direto ("chama no zap") — aguardando validação de tom pelo time
 
 ### 8.4 — Rollout e verificação
 - [x] Aplicar seção a seção com screenshot antes/depois para aprovação do time de produto
-- [ ] Contraste AA verificado (vermelho #e22718 sobre navy exige cuidado — testar com o validador)
+- [x] Contraste AA: criado --accent-red-bright #ff5a47 (5.2:1) p/ texto pequeno sobre navy; #e22718 mantido em displays (3.4:1 ≥ 3:1 texto grande ✓), tags brancas sobre vermelho 4.6:1 ✓, eyebrows claros 4.65:1 ✓
 - [x] reduced-motion (pole estático ✓), E2E booking 5/5 ✓, performance mobile (LCP da fonte display, grain barato), regressão E2E booking/admin
 - [x] Deploy preview na Vercel — branch `m8-street` (produção intocada até aprovação) para o time revisar antes de promover a produção
 
