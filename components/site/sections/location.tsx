@@ -18,7 +18,7 @@ export function Location() {
           <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-primary md:mb-4">
             Localização
           </p>
-          <h2 className="mb-5 text-3xl font-bold uppercase md:mb-6 md:text-5xl">
+          <h2 className="mb-5 font-display text-4xl font-normal tracking-wide uppercase md:mb-6 md:text-6xl">
             Encontre-nos
           </h2>
           <p className="text-base font-light leading-relaxed text-muted-foreground">

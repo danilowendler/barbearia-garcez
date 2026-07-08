@@ -21,11 +21,13 @@ function InstagramIcon({ className }: { className?: string }) {
   );
 }
 import { Logo } from "@/components/site/logo";
+import { PoleStripe } from "@/components/site/pole";
 import { navLinks, site, waLink } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="bg-secondary text-foreground">
+    <footer className="dark bg-background text-foreground">
+      <PoleStripe />
       <div className="mx-auto max-w-[1440px] px-[5%] py-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>

@@ -8,14 +8,14 @@ import { Reveal } from "@/components/site/reveal";
 
 export function Services({ services }: { services: Service[] }) {
   return (
-    <section id="servicos" className="scroll-mt-16 bg-background px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="servicos" className="dark relative grain scroll-mt-16 bg-background px-[5%] py-16 text-foreground md:py-24 lg:py-28">
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="mx-auto mb-12 w-full max-w-lg text-center md:mb-16 lg:mb-20">
-          <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-primary md:mb-4">
+          <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-accent-red md:mb-4">
             Serviços
           </p>
-          <h2 className="mb-5 text-3xl font-bold uppercase md:mb-6 md:text-5xl">
-            Preço justo, navalha afiada.
+          <h2 className="mb-5 font-display text-4xl font-normal tracking-wide uppercase md:mb-6 md:text-6xl">
+            Preço justo, <span className="text-accent-red">navalha afiada.</span>
           </h2>
           <p className="text-base font-light leading-relaxed text-muted-foreground">
             Do clássico ao moderno, cada serviço é executado com a maestria de
@@ -51,10 +51,10 @@ export function Services({ services }: { services: Service[] }) {
                     </span>
                     <Link
                       href="/agendar"
-                      className="flex items-center gap-1 text-[13px] font-bold tracking-[1.5px] uppercase text-primary hover:underline"
+                      className="flex items-center gap-1 text-[13px] font-bold tracking-[1.5px] uppercase text-foreground hover:underline"
                     >
                       Agendar
-                      <ChevronRight className="size-4" aria-hidden />
+                      <ChevronRight className="size-4 text-accent-red" aria-hidden />
                     </Link>
                   </div>
                 </div>

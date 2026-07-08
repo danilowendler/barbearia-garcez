@@ -187,6 +187,46 @@ Seções (ordem do [sitemap](relume-export/sitemap.md), esquemas re-mapeados par
 
 ---
 
+## M8 — Identidade "barbearia de rua" (street) + barber pole
+
+**Contexto (time de produto):** o site está corporativo demais para uma barbearia de vila com público de cultura periférica/street. Requisitos: (1) estética de rua, (2) incorporar o **vermelho** do barber pole da fachada, (3) possível elemento 3D do pole com animação de scroll.
+
+**Tese de design:** migrar do dialeto "BMW corporativo" para o **"BMW M / motorsport"** — que o próprio DESIGN-bmw.md já documenta e cujas cores da faixa M (`#0066b1` / `#1c69d4` / **`#e22718`**) são exatamente as do barber pole. Ganhamos o vermelho e a agressividade street **dentro do sistema existente**, sem recomeçar o design.
+
+### 8.1 — Tokens e fundação street
+- [ ] Vermelho na paleta: `--accent-red: #e22718` (+ variação p/ hover). **Hierarquia: azul continua a única cor de AÇÃO (CTAs); vermelho é EXPRESSÃO** — destaques de headline, tags de preço, faixa tricolor, detalhes — para não canibalizar a conversão do "Agendar"
+- [ ] **Dark-first**: inverter o ritmo claro/escuro — navy vira o fundo dominante (hero, serviços, produtos), claro vira respiro (galeria, localização). Street = noite, neon, vitrine acesa
+- [ ] Fonte display de rua para headlines via next/font (uma só, peso único): candidatas **Anton** (poster/pichação organizada) ou **Archivo Black** (peso brutal) — body continua Inter
+- [ ] Componente `PoleStripe`: a faixa tricolor de 4px (azul claro → azul → vermelho) como divisor de seções — assinatura visual em todo o site
+- [ ] Textura de grão/noise sutil nas bandas escuras (SVG feTurbulence inline, sem asset)
+
+### 8.2 — Barber pole (o momento de assinatura)
+- [ ] Componente `BarberPole` **faux-3D em CSS/SVG, zero dependência**: listras diagonais tricolor animadas (o giro real de um pole É uma ilusão 2D) + gradiente de sombreamento cilíndrico + tampas cromadas em gradiente metálico + reflexo de "vidro"
+- [ ] **Giro dirigido pelo scroll** (reusa `useScrollProgress`): parado ele gira devagar em loop; ao scrollar, acelera/avança proporcional ao progresso — como se o scroll "girasse" o pole
+- [ ] Posição: **hero** — pole vertical ao lado da headline (desktop) / acima (mobile), convivendo com a tesoura que corta o fio (a tesoura pode migrar para a seção de serviços se ficar cheio)
+- [ ] Versão mini do pole como bullet/ícone em pontos estratégicos (badge "aberta agora"?, marcador da localização)
+- [ ] Alternativa descartada: React Three Fiber (3D real) — +100KB de bundle e risco de jank no celular (público é mobile-first); o faux-3D é visualmente equivalente neste objeto. Reavaliar só se quisermos interação de arrastar/girar
+
+### 8.3 — Detalhes street seção a seção
+- [ ] Headlines com **palavra de destaque em vermelho** ou marcada com "risco de navalha" (SVG stroke à mão, ecoando os desenhos freestyle das fotos reais)
+- [ ] Preços como **tags/etiquetas** (sticker levemente rotacionado, borda grossa) em vez de texto sóbrio
+- [ ] Fotos da galeria com moldura/fita adesiva ou borda dura — cara de mural de rua
+- [ ] Depoimentos como "pichação de parede": aspas gigantes, tipografia display
+- [ ] Footer com a faixa tricolor + wordmark grande
+- [ ] Microcopy mais direto onde couber ("Cola aqui", "Chama no zap") — validar tom com o time
+
+### 8.4 — Rollout e verificação
+- [ ] Aplicar seção a seção com screenshot antes/depois para aprovação do time de produto
+- [ ] Contraste AA verificado (vermelho #e22718 sobre navy exige cuidado — testar com o validador)
+- [ ] reduced-motion (pole estático), performance mobile (LCP da fonte display, grain barato), regressão E2E booking/admin
+- [ ] Deploy preview na Vercel para o time revisar antes de promover a produção
+
+**Decisões tomadas (vetáveis):** azul mantém os CTAs (vermelho = expressão, não ação) · dark-first · pole faux-3D no hero · fonte display Anton/Archivo Black (defino na 8.1 com teste visual).
+
+**Pronto quando:** o time de produto olhar e disser "isso é a nossa quebrada" — com conversão de agendamento intacta.
+
+---
+
 ## Inputs pendentes do usuário
 
 | Input | Necessário para |

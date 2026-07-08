@@ -8,6 +8,7 @@ import { Logo } from "@/components/site/logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/site";
+import { PoleStripe } from "@/components/site/pole";
 
 const SECTION_IDS = ["servicos", "galeria", "produtos", "sobre", "localizacao"];
 
@@ -64,7 +65,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background">
+    <header className="dark sticky top-0 z-50 bg-background text-foreground">
       <nav className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-[5%]">
         <Logo />
 
@@ -77,8 +78,8 @@ export function Navbar() {
                 className={cn(
                   "px-4 py-2 text-sm tracking-[0.3px] transition-colors hover:text-primary",
                   isActive(link.href)
-                    ? "font-bold text-primary"
-                    : "text-foreground",
+                    ? "font-bold text-foreground underline decoration-accent-red decoration-2 underline-offset-8"
+                    : "text-muted-foreground",
                 )}
               >
                 {link.label}
@@ -140,6 +141,7 @@ export function Navbar() {
           </Button>
         </div>
       )}
+      <PoleStripe className="h-[3px]" />
     </header>
   );
 }

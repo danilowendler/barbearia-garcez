@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
  * IntersectionObserver liga o listener só quando visível; rAF evita layout
  * thrashing. Com prefers-reduced-motion, fixa 1 (arte pronta, estática).
  */
-function useScrollProgress<T extends HTMLElement>() {
+export function useScrollProgress<T extends HTMLElement>() {
   const ref = useRef<T>(null);
 
   useEffect(() => {
