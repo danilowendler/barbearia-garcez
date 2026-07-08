@@ -175,13 +175,15 @@ Seções (ordem do [sitemap](relume-export/sitemap.md), esquemas re-mapeados par
 
 ---
 
-## M7 — Deploy
+## ✅ M7 — Deploy (concluído)
 
-- [ ] Instalar Vercel CLI (`npm i -g vercel`) e linkar projeto
-- [ ] Env vars na Vercel (produção) — service role só server-side
-- [ ] Deploy preview → validação → deploy produção
-- [ ] Teste pós-deploy: agendamento real em produção
-- [ ] (Opcional) domínio próprio
+- [x] Repositório GitHub: https://github.com/danilowendler/barbearia-garcez (push da main; .gitignore exclui env, relume-export e fotos brutas)
+- [x] Projeto importado na Vercel via GitHub (deploy automático a cada push)
+- [x] Env vars configuradas (incl. `NEXT_PUBLIC_SITE_URL` pós-primeiro-deploy)
+- [x] **Verificação pós-deploy em https://barbearia-garcez.vercel.app**: rotas 200 ✓ · /admin → 307 login ✓ · headers de segurança ativos ✓ · conteúdo real ✓ · sitemap/robots com URL de produção ✓ · **agendamento real E2E em produção 5/5** ✓
+- [ ] (Opcional, futuro) domínio próprio; MFA no admin; nomes reais dos barbeiros
+
+**Site no ar: https://barbearia-garcez.vercel.app** 🚀
 
 ---
 

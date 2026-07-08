@@ -4,6 +4,8 @@
 import { readFileSync, existsSync } from "node:fs";
 import puppeteer from "puppeteer-core";
 
+const BASE = process.env.E2E_BASE_URL ?? "http://localhost:3000";
+
 const edge = [
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
@@ -59,7 +61,7 @@ const page = await browser.newPage();
 await page.setViewport({ width: 390, height: 844, isMobile: true });
 
 // ── 1º agendamento: Degradê com Garcez ──────────────────────────────────
-await page.goto("http://localhost:3000/agendar", {
+await page.goto(`${BASE}/agendar`, {
   waitUntil: "networkidle0",
   timeout: 60_000,
 });
@@ -74,22 +76,32 @@ await page.waitForFunction(
     ),
   { timeout: 30_000 },
 );
-const pickedDay = await page.evaluate(() => {
-  const day = [...document.querySelectorAll("button:not([disabled])")].find(
-    (b) => /^(Hoje|seg|ter|qua|qui|sex|s[áa]b)/i.test(b.textContent.trim()),
+// tenta os primeiros dias abertos até achar um com horário livre
+let pickedDay = null;
+for (let dayIndex = 0; dayIndex < 4 && !pickedDay; dayIndex++) {
+  const dayLabel = await page.evaluate((i) => {
+    const days = [...document.querySelectorAll("button:not([disabled])")].filter(
+      (b) => /^(Hoje|seg|ter|qua|qui|sex|s[áa]b)/i.test(b.textContent.trim()),
+    );
+    days[i]?.click();
+    return days[i]?.textContent.trim() ?? null;
+  }, dayIndex);
+  if (!dayLabel) break;
+  await page.waitForFunction(
+    () =>
+      [...document.querySelectorAll("button")].some((b) =>
+        /^\d{2}:\d{2}$/.test(b.textContent.trim()),
+      ) || document.body.textContent.includes("Nenhum horário livre"),
+    { timeout: 30_000 },
   );
-  day.click();
-  return day.textContent.trim();
-});
-
-// primeiro horário livre
-await page.waitForFunction(
-  () =>
+  const hasTimes = await page.evaluate(() =>
     [...document.querySelectorAll("button")].some((b) =>
       /^\d{2}:\d{2}$/.test(b.textContent.trim()),
     ),
-  { timeout: 30_000 },
-);
+  );
+  if (hasTimes) pickedDay = dayLabel;
+}
+if (!pickedDay) throw new Error("nenhum dia com horário livre encontrado");
 const pickedTime = await page.evaluate(() => {
   const t = [...document.querySelectorAll("button")].find((b) =>
     /^\d{2}:\d{2}$/.test(b.textContent.trim()),
@@ -130,7 +142,7 @@ ok(
 );
 
 // ── 2ª visita: mesmo barbeiro/dia → horário não deve mais aparecer ──────
-await page.goto("http://localhost:3000/agendar", {
+await page.goto(`${BASE}/agendar`, {
   waitUntil: "networkidle0",
 });
 await clickByText(page, "button", "Moicano");
