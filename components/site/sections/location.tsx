@@ -15,7 +15,7 @@ export function Location() {
     >
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="mb-12 max-w-lg md:mb-16 lg:mb-20">
-          <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-primary md:mb-4">
+          <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-accent-red md:mb-4">
             Localização
           </p>
           <h2 className="mb-5 font-display text-4xl font-normal tracking-wide uppercase md:mb-6 md:text-6xl">

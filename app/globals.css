@@ -57,6 +57,7 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-accent-red: var(--accent-red);
+  --color-accent-red-bright: var(--accent-red-bright);
   --color-pole-blue: var(--pole-blue);
   --font-display: var(--font-anton), Impact, "Arial Narrow Bold", sans-serif;
 }
@@ -110,6 +111,7 @@
   --success: #22c55e;
   --warning: #f59e0b;
   --accent-red: #e22718;   /* vermelho do barber pole (faixa M) */
+  --accent-red-bright: #ff5a47; /* p/ texto pequeno sobre navy (AA 5.2:1) */
   --pole-blue: #0066b1;    /* azul claro da faixa M */
 }
 
@@ -155,6 +157,7 @@
   --success: #22c55e;
   --warning: #f59e0b;
   --accent-red: #e22718;
+  --accent-red-bright: #ff5a47;
   --pole-blue: #0066b1;
 }
 
@@ -392,4 +395,20 @@
     #dfe3e8 76%,
     #484b52 100%
   );
+}
+
+/* risco de navalha sob a palavra de destaque do hero */
+.navalha {
+  position: relative;
+  display: inline-block;
+}
+.navalha::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.08em;
+  height: 0.14em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M2 6 Q30 1.5 60 5 T118 2.5' stroke='%23e22718' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
 }

@@ -91,7 +91,7 @@ export default async function AgendarPage() {
         <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-primary">
           Agendamento
         </p>
-        <h1 className="mb-5 text-3xl font-bold uppercase md:text-5xl">
+        <h1 className="mb-5 font-display text-4xl font-normal tracking-wide uppercase md:text-6xl">
           Agendamento online indisponível
         </h1>
         <p className="mb-8 max-w-md text-base font-light text-muted-foreground">
@@ -118,10 +118,10 @@ export default async function AgendarPage() {
 
   return (
     <section className="mx-auto w-full max-w-3xl px-[5%] py-12 md:py-16">
-      <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-primary">
+      <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-accent-red">
         Agendamento
       </p>
-      <h1 className="mb-2 text-3xl font-bold uppercase md:text-4xl">
+      <h1 className="mb-2 font-display text-4xl font-normal tracking-wide uppercase md:text-5xl">
         Escolha seu horário
       </h1>
       <p className="mb-10 max-w-md text-base font-light text-muted-foreground">

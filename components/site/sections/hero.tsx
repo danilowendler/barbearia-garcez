@@ -11,7 +11,7 @@ export function Hero() {
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-10">
           <div className="w-full max-w-2xl">
             <h1 className="mb-5 font-display text-6xl font-normal leading-[1.02] tracking-wide uppercase md:mb-6 md:text-8xl">
-              O corte que <span className="text-accent-red">define</span>
+              O corte que <span className="navalha text-accent-red">define</span>
               {" o homem."}
             </h1>
             <p className="max-w-lg text-lg font-light leading-relaxed text-on-dark-soft">

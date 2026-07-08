@@ -134,7 +134,7 @@ export function BookingWizard({
         <div className="mb-6 flex size-12 items-center justify-center bg-primary text-primary-foreground">
           <Check className="size-6" aria-hidden />
         </div>
-        <h2 className="mb-2 text-2xl font-bold uppercase md:text-3xl">
+        <h2 className="mb-2 font-display text-3xl font-normal tracking-wide uppercase md:text-4xl">
           Horário reservado!
         </h2>
         <p className="mb-8 text-base font-light text-muted-foreground">

@@ -39,7 +39,7 @@ export function Gallery() {
     >
       <div className="mx-auto max-w-[1440px]">
         <Reveal className="mx-auto mb-12 max-w-lg text-center md:mb-16 lg:mb-20">
-          <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-primary md:mb-4">
+          <p className="mb-3 text-[13px] font-bold tracking-[1.5px] uppercase text-accent-red md:mb-4">
             Galeria
           </p>
           <h2 className="mb-5 font-display text-4xl font-normal tracking-wide uppercase md:mb-6 md:text-6xl">
@@ -58,13 +58,13 @@ export function Gallery() {
           className="mx-auto max-w-md"
         >
           <CarouselContent>
-            {slides.map((image) => (
+            {slides.map((image, index) => (
               <CarouselItem key={image.src}>
                 <a
                   href={site.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative block aspect-[4/5] w-full overflow-hidden"
+                  className={cn("relative block aspect-[4/5] w-full overflow-hidden border-[6px] border-white shadow-[0_12px_32px_rgba(0,0,0,0.18)]", index % 2 === 0 ? "rotate-1" : "-rotate-1")}
                 >
                   <Image
                     src={image.src}
